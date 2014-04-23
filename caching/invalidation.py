@@ -5,7 +5,7 @@ import logging
 import socket
 
 from django.conf import settings
-from django.core.cache import cache as default_cache, get_cache, parse_backend_uri
+from django.core.cache import cache as default_cache, get_cache
 from django.core.cache.backends.base import InvalidCacheBackendError
 from django.utils import encoding, translation
 
@@ -60,7 +60,7 @@ def safe_redis(return_type):
         def wrapper(*args, **kw):
             try:
                 return f(*args, **kw)
-            except (socket.error, redislib.RedisError), e:
+            except (socket.error, redislib.RedisError) as e:
                 log.error('redis error: %s' % e)
                 # log.error('%r\n%r : %r' % (f.__name__, args[1:], kw))
                 if hasattr(return_type, '__call__'):
