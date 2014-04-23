@@ -32,6 +32,8 @@ SETTINGS = ('locmem_settings',
             'custom_backend')
 
 try:
+    assert False # redis broken intentionally
+
     import redis
     redis.Redis(host='localhost', port=6379).info()
     SETTINGS += ('redis_settings', 'redis_byid')
