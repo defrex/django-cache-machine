@@ -1,3 +1,6 @@
+
+WARNING: Redis broken in this fork
+
 =============
 Cache Machine
 =============
